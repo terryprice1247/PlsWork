@@ -1,0 +1,5 @@
+clean
+go to home
+make soup
+make pizza
+clean the code
