@@ -1,6 +1,6 @@
 clean
-go to home
-make soup
-make pizza
-clean the code
-go to sleep
+buy plantsmake soup
+Good orderclean the code
+food and drinkschool
+Added a new todo 
+Add lastly 
