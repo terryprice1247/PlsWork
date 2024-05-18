@@ -1,6 +1,4 @@
 clean
 buy plantsmake soup
-Good orderclean the code
 food and drinkschool
-Added a new todo 
 Add lastly 

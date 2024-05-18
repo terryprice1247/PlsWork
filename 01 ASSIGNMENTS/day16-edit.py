@@ -7,10 +7,15 @@ add_button = sg.Button("Add")
 list_box = sg.Listbox(values=functions.get_todos(), key ='todos',   # getting the list from todos.txt
                       enable_events=True, size=[45, 10])            # enabling true or false
 edit_button = sg.Button("Edit")
+delete_button = sg.Button("Delete")
+exit_button = sg.Button("Exit")
 
 window = sg.Window('My To-Do App',
-                   layout=[[label], [input_box, add_button], [list_box, edit_button]],    # this is a element
-                   font=('Helvetica', 20))  # where we place the elements
+                   layout=[[label],
+                           [input_box, add_button],
+                           [list_box, edit_button, delete_button],
+                           [exit_button]],    # this is where we place our elements
+                   font=('Helvetica', 20))
 
 while True:             # making a loop so the program won't close yet
     event, values = window.read()  # making a variable to read what we input
@@ -33,6 +38,17 @@ while True:             # making a loop so the program won't close yet
             todos[index] = new_todo                 # updates the todos list with new one
             functions.write_todos(todos)            # writes that new one to the todos.txt file
             window['todos'].update(values=todos)        # going into the window clicking the todos and updating
+
+        case "Delete":
+            todo_to_delete = values['todos'][0]     # gets the value of the
+            todos = functions.get_todos()              # calling get todo function with the values
+            todos.remove(todo_to_delete)            # removes the todo we selected in app
+            functions.write_todos(todos)           # calling the write todo function to update the file
+            window['todos'].update(values=todos)       # updates the app so that it is gone
+            window['todo'].update(value='')         # calling the input box by it key name and empty it
+
+        case "Exit":
+            break
 
         case 'todos':
             window['todo'].update(value=values['todos'][0])  # when we click the item it changes on the textbox
