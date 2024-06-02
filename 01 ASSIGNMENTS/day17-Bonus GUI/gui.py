@@ -1,13 +1,19 @@
 import functions  # This is the file where we put our functions in.
 import FreeSimpleGUI as sg  # naming the app sg to make it easier to code
 import time
+import os   # making it so if a file doesn't exist
 
-sg.theme("Black")                                   # makes the background black
+if not os.path.exists("todos.txt"):         # if the file is not in location
+    with open("todos.txt", "w") as file:           # opens new file named todos.txt
+        pass                                # statement that doesn't do anything but has to be there
+
+sg.theme("Black")  # makes the background black
 
 clock = sg.Text('', key='clock')
 label = sg.Text("Type in a to-do")  # creates a label
 input_box = sg.InputText(tooltip="Enter todo", key="todo")  # what we will see if we hover mouse over textbox
-add_button = sg.Button("Add")
+add_button = sg.Button("Add", mouseover_colors="LightBlue2",
+                       tooltip="Add Todo", key="Add")
 list_box = sg.Listbox(values=functions.get_todos(), key='todos',  # getting the list from todos.txt
                       enable_events=True, size=[45, 10])  # enabling true or false
 edit_button = sg.Button("Edit")
@@ -24,13 +30,13 @@ window = sg.Window('My To-Do App',
 
 while True:  # making a loop so the program won't close until we wish it to
     event, values = window.read(timeout=200)  # making a variable to read what we input
-    window['clock'].update(value=time.strftime("%b %d,%Y %H:%M:%S"))    # the clock functions code
+    window['clock'].update(value=time.strftime("%b %d,%Y %H:%M:%S"))  # the clock functions code
     match event:  # making an if / then style loop
         case "Add":
-            todos = functions.get_todos()       # will call the get todos function from the other file
-            new_todo = values['todo'] + "\n"    # gives us the value of the action added from the app
-            todos.append(new_todo)              # places the new todo into the list
-            functions.write_todos(todos)        # writes it into todos.txt
+            todos = functions.get_todos()  # will call the get todos function from the other file
+            new_todo = values['todo'] + "\n"  # gives us the value of the action added from the app
+            todos.append(new_todo)  # places the new todo into the list
+            functions.write_todos(todos)  # writes it into todos.txt
             window['todos'].update(values=todos)  # adding the new todo on the list box app in realtime
 
         case "Edit":
