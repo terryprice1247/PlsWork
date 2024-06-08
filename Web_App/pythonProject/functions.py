@@ -1,10 +1,10 @@
 FILEPATH = "todos.txt"      # the functions page
 
 
-def get_todos(filepath=FILEPATH):  # making the filepath the document we are using
-    with open(filepath, 'r') as file_local:
-        todos_local = file_local.readlines()
-    return todos_local  # defining how we will call the function
+def get_todos():  # making the filepath the document we are using
+    with open('todos.txt', encoding='iso-8859-1') as file:
+        todos = file.readlines()
+    return todos  # defining how we will call the function
 
 
 def write_todos(todos_arg, filepath=FILEPATH):  # making a function to write data making a new local variable
