@@ -1,4 +1,4 @@
-FILEPATH = "todos.txt"
+FILEPATH = "WebApp-Todo/todos.txt"
 
 
 def get_todos(filepath=FILEPATH):  # making the filepath the document we are using
