@@ -1,4 +1,4 @@
-FILEPATH = "todos.txt"      # the functions page
+FILEPATH = "Web_App/pythonProject/todos.txt"      # the functions page
 
 
 def get_todos():  # making the filepath the document we are using
