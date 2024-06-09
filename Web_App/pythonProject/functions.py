@@ -1,8 +1,8 @@
-FILEPATH = "Web_App/pythonProject/todos.txt"      # the functions page
+FILEPATH = "todos.txt"      # the functions page
 
 
 def get_todos():  # making the filepath the document we are using
-    with open('todos.txt', encoding='iso-8859-1') as file:
+    with open('todos.txt', encoding='utf-8') as file:
         todos = file.readlines()
     return todos  # defining how we will call the function
 
